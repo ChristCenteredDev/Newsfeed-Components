@@ -112,3 +112,60 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+
+function createComponent(obj) {
+  const div = document.createElement('div');
+  div.classList.add('article');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  date.classList.add('date');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const span = document.createElement('span');
+  span.classList.add('expandButton');
+
+  title.textContent = obj.title;
+  date.textContent = obj.date;
+  p1.textContent = obj.firstParagraph;
+  p2.textContent = obj.secondParagraph;
+  p3.textContent = obj.thirdParagraph;
+
+  div.appendChild(title);
+  div.appendChild(date);
+  div.appendChild(p1);
+  div.appendChild(p2);
+  div.appendChild(p3);
+  div.appendChild(span);
+
+  div.addEventListener('click', (e)=> {
+    div.classList.toggle('article-open');
+  });
+
+  return div;
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach((obj)=> {
+  articles.appendChild(createComponent2(obj));
+});
+
+function createComponent2(obj) {
+  const div = document.createElement('div');
+  div.classList.add('article');
+  div.innerHTML = 
+  `<h2>${obj.title}</h2>
+  <p class="date">${obj.date}</p>
+
+  <p>${obj.firstParagraph}</p>
+  <p>${obj.secondParagraph}</p>
+  <p>${obj.thirdParagraph}</p>`;
+
+  div.addEventListener('click', (e)=> {
+    div.classList.toggle('article-open');
+  });
+
+  return div;
+}
