@@ -139,7 +139,7 @@ function createComponent(obj) {
   div.appendChild(p3);
   div.appendChild(span);
 
-  span.addEventListener('click', (e)=> {
+  div.addEventListener('click', (e)=> {
     div.classList.toggle('article-open');
   });
 
@@ -149,5 +149,23 @@ function createComponent(obj) {
 const articles = document.querySelector('.articles');
 
 data.forEach((obj)=> {
-  articles.appendChild(createComponent(obj));
+  articles.appendChild(createComponent2(obj));
 });
+
+function createComponent2(obj) {
+  const div = document.createElement('div');
+  div.classList.add('article');
+  div.innerHTML = 
+  `<h2>${obj.title}</h2>
+  <p class="date">${obj.date}</p>
+
+  <p>${obj.firstParagraph}</p>
+  <p>${obj.secondParagraph}</p>
+  <p>${obj.thirdParagraph}</p>`;
+
+  div.addEventListener('click', (e)=> {
+    div.classList.toggle('article-open');
+  });
+
+  return div;
+}
